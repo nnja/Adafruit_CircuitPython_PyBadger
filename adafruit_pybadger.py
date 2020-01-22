@@ -75,6 +75,8 @@ def load_font(fontname, text):
     :param str text: The text containing the glyphs we want to load.
 
     """
+    if not isinstance(fontname, str):
+        return
     font = bitmap_font.load_font(fontname)
     font.load_glyphs(text.encode('utf-8'))
     return font
@@ -282,8 +284,7 @@ class PyBadger:
             except AttributeError:
                 self.display.wait_for_frame()
         if name_string:
-            if isinstance(name_font, str):
-                name_font = load_font(name_font, name_string)
+            name_font = load_font(name_font, name_string)
             name_group = displayio.Group(scale=name_scale)
             name_label = Label(name_font, text=name_string, line_spacing=0.75)
             (_, _, width, _) = name_label.bounding_box
@@ -293,8 +294,7 @@ class PyBadger:
             name_group.append(name_label)
             business_card_splash.append(name_group)
         if email_string_one:
-            if isinstance(email_font_one, str):
-                email_font_one = load_font(email_font_one, email_string_one)
+            email_font_one = load_font(email_font_one, email_string_one)
             email_group_one = displayio.Group(scale=email_scale_one)
             email_label_one = Label(email_font_one, text=email_string_one, line_spacing=0.75)
             (_, _, width, _) = email_label_one.bounding_box
@@ -305,8 +305,7 @@ class PyBadger:
             email_group_one.append(email_label_one)
             business_card_splash.append(email_group_one)
         if email_string_two:
-            if isinstance(email_font_two, str):
-                email_font_two = load_font(email_font_two, email_string_two)
+            email_font_two = load_font(email_font_two, email_string_two)
             email_group_two = displayio.Group(scale=email_scale_two)
             email_label_two = Label(email_font_two, text=email_string_two, line_spacing=0.75)
             (_, _, width, _) = email_label_two.bounding_box
@@ -359,8 +358,7 @@ class PyBadger:
                     (int(self.display.height * 0.5)), fill=foreground_color)
         splash.append(rect)
 
-        if isinstance(hello_font, str):
-            hello_font = load_font(hello_font, hello_string)
+        hello_font = load_font(hello_font, hello_string)
         hello_group = displayio.Group(scale=hello_scale)
         hello_label = Label(font=hello_font, text=hello_string, line_spacing=0.75)
         (_, _, width, _) = hello_label.bounding_box
@@ -369,8 +367,7 @@ class PyBadger:
         hello_label.color = background_text_color
         hello_group.append(hello_label)
 
-        if isinstance(my_name_is_font, str):
-            my_name_is_font = load_font(my_name_is_font, my_name_is_string)
+        my_name_is_font = load_font(my_name_is_font, my_name_is_string)
         my_name_is_group = displayio.Group(scale=my_name_is_scale)
         my_name_is_label = Label(font=my_name_is_font, text=my_name_is_string, line_spacing=0.75)
         (_, _, width, _) = my_name_is_label.bounding_box
@@ -379,8 +376,7 @@ class PyBadger:
         my_name_is_label.color = background_text_color
         my_name_is_group.append(my_name_is_label)
 
-        if isinstance(name_font, str):
-            name_font = load_font(name_font, name_string)
+        name_font = load_font(name_font, name_string)
         name_group = displayio.Group(scale=name_scale)
         name_label = Label(font=name_font, text=name_string, line_spacing=0.75)
         (_, _, width, _) = name_label.bounding_box
