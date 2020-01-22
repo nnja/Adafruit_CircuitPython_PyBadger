@@ -355,12 +355,11 @@ class PyBadger:
                             "Blinka".
 
         """
-        splash = displayio.Group(max_size=20)
-
         color_bitmap = displayio.Bitmap(self.display.width, self.display.height, 1)
         color_palette = displayio.Palette(1)
         color_palette[0] = background_color
 
+        splash = displayio.Group(max_size=20)
         bg_sprite = displayio.TileGrid(color_bitmap,
                                        pixel_shader=color_palette,
                                        x=0, y=0)
