@@ -249,6 +249,8 @@ class PyBadger:
     def _create_label_group(font, text, scale, color,
                             height_adjustment, width_adjustment=2,
                             line_spacing=0.75):
+        """Helper method to create a label group containing text.
+        """
         font = load_font(font, text)
         group = displayio.Group(scale=scale)
         label = Label(font=font, text=text, line_spacing=line_spacing)
